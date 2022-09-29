@@ -33,18 +33,7 @@ export const Layout = ({
         />
       </Head>
       <Header />
-      <Box
-        component="main"
-        sx={{
-          my: 4,
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        {children}
-      </Box>
+      <Box component="main">{children}</Box>
       <Footer />
     </Box>
   );
