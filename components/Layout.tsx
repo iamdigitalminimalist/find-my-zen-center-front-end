@@ -1,6 +1,7 @@
 import { Box, Container } from "@mui/material";
 import Head from "next/head";
 import React from "react";
+import Header from "./Header";
 
 type LayoutProps = {
   title?: string;
@@ -16,7 +17,7 @@ export const Layout = ({
   children,
 }: LayoutProps) => {
   return (
-    <Container component="div" maxWidth="lg">
+    <Box>
       <Head>
         <title>{title ? title : "Wellness Events App"}</title>
         <meta
@@ -30,6 +31,7 @@ export const Layout = ({
           content={keywords ? keywords : "wellness, meditation, retreat"}
         />
       </Head>
+      <Header />
       <Box
         component="main"
         sx={{
@@ -42,6 +44,6 @@ export const Layout = ({
       >
         {children}
       </Box>
-    </Container>
+    </Box>
   );
 };
