@@ -12,7 +12,7 @@ type LayoutProps = {
   metaDescription?: string;
   metaKeywords?: string;
   title?: string;
-  children: React.ReactNode;
+  children: JSX.Element | JSX.Element[];
 };
 
 export const Layout = ({
