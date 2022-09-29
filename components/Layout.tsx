@@ -4,6 +4,8 @@ import React from "react";
 import Header from "./Header";
 import { Footer } from "./Footer";
 import { PageTitle } from "./PageTitle";
+import { useRouter } from "next/router";
+import { Hero } from "@/components/Hero";
 
 type LayoutProps = {
   metaTitle?: string;
@@ -20,6 +22,7 @@ export const Layout = ({
   title,
   children,
 }: LayoutProps) => {
+  const router = useRouter();
   return (
     <Box>
       <Head>
@@ -42,6 +45,7 @@ export const Layout = ({
       <Header />
       <Box component="main">
         {title ? <PageTitle title={title} /> : null}
+        {router.pathname === "/" ? <Hero /> : null}
         {children}
       </Box>
       <Footer />

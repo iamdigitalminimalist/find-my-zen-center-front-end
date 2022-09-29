@@ -1,3 +1,21 @@
+import theme from "@/utils/theme";
+
+export const heroBackground = {
+  backgroundImage: `url(/erol-ahmed-aIYFR0vbADk-unsplash.jpg)`,
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  height: 300,
+};
+
+export const heroTitle = {
+  my: { xs: 6, sm: 12 },
+  color: "white",
+  textAlign: "center",
+  fontWeight: 600,
+  textShadow:
+    "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
+};
+
 /*************************
  * Footer
  *************************/
@@ -30,6 +48,7 @@ export const flexColumnCenter = {
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
+  alignItems: "center",
 };
 
 export const inlineText = {

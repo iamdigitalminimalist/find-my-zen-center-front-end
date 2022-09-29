@@ -6,7 +6,6 @@ const Home: NextPage = () => {
     <Layout
       metaTitle="Wellness Events App - Home Page"
       metaDescription="Discover wellness events near you"
-      title="Wellness Events App"
     >
       <></>
     </Layout>
