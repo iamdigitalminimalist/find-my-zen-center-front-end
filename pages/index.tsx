@@ -1,13 +1,13 @@
 import type { GetStaticProps } from "next";
 import { Layout } from "@/components/Layout";
 import { Box, Container, Typography } from "@mui/material";
+import { EventItemCard } from "@/components/EventItemCard";
 
 type HomePageProps = {
   events: EventType[];
 };
 
 const Home = ({ events }: HomePageProps) => {
-  console.log(events);
   return (
     <Layout
       metaTitle="Wellness Events App - Home Page"
@@ -19,9 +19,7 @@ const Home = ({ events }: HomePageProps) => {
         </Typography>
         {events.length !== 0 ? (
           events.map((evt: EventType) => (
-            <Typography key={evt.id} variant="h6" component="h3">
-              {evt.name}
-            </Typography>
+            <EventItemCard key={evt.id} event={evt} />
           ))
         ) : (
           <Typography variant="h6" component="h3">

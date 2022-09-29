@@ -9,13 +9,12 @@ import {
   Button,
 } from "@mui/material";
 import { CalendarMonth, Place } from "@mui/icons-material";
-import { flexAlignCenter } from "@/utils/globalStyles";
 
 type EventItemProps = {
   event: EventType;
 };
 
-export const EventItem = ({ event }: EventItemProps) => {
+export const EventItemCard = ({ event }: EventItemProps) => {
   return (
     <Box>
       <Card

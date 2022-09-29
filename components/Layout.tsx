@@ -43,7 +43,7 @@ export const Layout = ({
         />
       </Head>
       <Header />
-      <Box component="main">
+      <Box component="main" sx={{ minHeight: "100vh" }}>
         {title ? <PageTitle title={title} /> : null}
         {router.pathname === "/" ? <Hero /> : null}
         {children}

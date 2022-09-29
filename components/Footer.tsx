@@ -39,7 +39,6 @@ export const Footer = () => {
       px={{ xs: 3, sm: 10 }}
       py={{ xs: 5, sm: 8 }}
       sx={{
-        position: "fixed",
         bottom: 0,
         width: "100%",
       }}
