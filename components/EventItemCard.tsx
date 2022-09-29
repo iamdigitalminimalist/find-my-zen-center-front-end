@@ -9,12 +9,14 @@ import {
   Button,
 } from "@mui/material";
 import { CalendarMonth, Place } from "@mui/icons-material";
+import { useRouter } from "next/router";
 
 type EventItemProps = {
   event: EventType;
 };
 
 export const EventItemCard = ({ event }: EventItemProps) => {
+  const router = useRouter();
   return (
     <Box>
       <Card
@@ -72,11 +74,13 @@ export const EventItemCard = ({ event }: EventItemProps) => {
             </Box>
           </CardContent>
           <Box sx={{ display: "flex", alignItems: "center", pl: 3, pb: 2 }}>
-            <Link href={`/events/${event.slug}`}>
-              <Button variant="contained" size="small">
-                More Details
-              </Button>
-            </Link>
+            <Button
+              variant="contained"
+              size="small"
+              onClick={() => router.push(`/events/${event.slug}`)}
+            >
+              More Details
+            </Button>
           </Box>
         </Box>
       </Card>

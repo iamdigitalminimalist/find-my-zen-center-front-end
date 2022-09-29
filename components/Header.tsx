@@ -11,14 +11,18 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
 import Link from "next/link";
 
 const pages = [
   {
     id: "1",
     title: "Events",
-    href: "events",
+    href: "/events",
+  },
+  {
+    id: "2",
+    title: "Log in",
+    href: "/login",
   },
 ];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -101,7 +105,7 @@ const Header = () => {
             >
               {pages.map((page) => (
                 <MenuItem key={page.id} onClick={handleCloseNavMenu}>
-                  <Link href={page.href}>
+                  <Link href={`${page.href}`}>
                     <Typography textAlign="center">{page.title}</Typography>
                   </Link>
                 </MenuItem>
@@ -133,14 +137,17 @@ const Header = () => {
             component="nav"
           >
             {pages.map((page) => (
-              <Link key={page.id} href={page.href}>
-                <Button
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "block" }}
-                >
-                  {page.title}
-                </Button>
-              </Link>
+              <Button
+                key={page.id}
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                <Link href={`${page.href}`}>
+                  <Typography variant="body1" component="a">
+                    {page.title}
+                  </Typography>
+                </Link>
+              </Button>
             ))}
           </Box>
 
