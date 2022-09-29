@@ -5,11 +5,20 @@ interface EventType {
   location: string;
   address?: string;
   locationCode?: string;
-  teachers: TeacherType[];
-  startDate: string;
-  endDate: string;
-  time?: string;
+  date: {
+    startDate: string;
+    endDate: string;
+    startTime?: string;
+  };
   description: string;
+  schedule?: string;
+  accommodation?: string;
+  pricing?: {
+    amount?: number;
+    currency?: string;
+  };
+  meals?: string;
+  teachers: TeacherType[];
   image: ImageType;
 }
 

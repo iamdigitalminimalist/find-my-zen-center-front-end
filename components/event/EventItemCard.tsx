@@ -59,7 +59,7 @@ export const EventItemCard = ({ event }: EventItemProps) => {
                 color="text.secondary"
                 component="p"
               >
-                {event.startDate} - {event.endDate}
+                {event.date.startDate} - {event.date.endDate}
               </Typography>
             </Box>
             <Box sx={{ display: "flex", alignItems: "center" }}>

@@ -17,9 +17,11 @@
           "name": "Hadar Eilon"
         }
       ],
+      "date": {
       "startDate": "November 9, 2022",
       "endDate": "November 12, 2022",
-      "time": "6:00 PM",
+      "startTime": "6:00 PM"
+      },
       "description": "4 days of a pampering yoga vacation in Sinai. Soft yoga, conscious movement, meditation, focus of attention, conversations in the spirit of yoga, medical massage and a lot of free time to enjoy silence and the panoramic view - will give us optimal conditions for body and soul.",
       "image": {
         "imageUrl": "/images/move-softly-yoga-vocation-in-sinai-cover-image.jpg",
@@ -41,8 +43,10 @@
           "name": "Iris Shaked"
         }
       ],
+      "date": {
       "startDate": "November 30, 2022",
-      "endDate": "December 4, 2022",
+      "endDate": "December 4, 2022"
+      },
       "description": "5 days of balance, rest and rejuvenation of the body and mind. An opportunity to get excited, travel, practice, breathe, laugh and pamper yourself. An unforgettable experience at the end of which joy will return, charged with the energies of renewal and with practical tools for a good and happy life. It's time to choose the life you want. // It is an invitation to stop from the daily routine and allow yourself to simply be. Embark on an inner journey that will allow you to better understand yourself, awaken your senses and reconnect with your passions and dreams",
       "image": {
         "imageUrl": "/images/retreat-what-the-heart-desires-cover-image.jpg",
@@ -51,6 +55,10 @@
         "imagePhotographerCredit": "https://unsplash.com/@datingjungle?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText",
         "imageWebsiteSource": "Unsplash",
         "imageWebsiteCredit": "https://unsplash.com/s/photos/cyprus-mountains?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+      },
+      "pricing": {
+        "amount": 5000,
+        "currency": "NIS"
       }
     }
   ]

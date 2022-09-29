@@ -1,7 +1,7 @@
 import type { GetStaticProps } from "next";
 import { Layout } from "@/components/Layout";
-import { Box, Container, Typography } from "@mui/material";
-import { EventItemCard } from "@/components/EventItemCard";
+import { Box, Typography } from "@mui/material";
+import { EventItemCard } from "@/components/event/EventItemCard";
 
 type HomePageProps = {
   events: EventType[];

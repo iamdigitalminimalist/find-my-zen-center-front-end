@@ -2,6 +2,7 @@ import { Layout } from "@/components/Layout";
 import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
 import { Box } from "@mui/material";
 import { ParsedUrlQuery } from "querystring";
+import { EventItemPage } from "@/components/event/EventItemPage";
 
 type EventPageProps = {
   event: EventType;
@@ -12,9 +13,10 @@ interface Params extends ParsedUrlQuery {
 }
 
 const EventPage = ({ event }: EventPageProps) => {
+  // console.log(event);
   return (
-    <Layout title="Event Page">
-      <Box>{event.name}</Box>
+    <Layout>
+      <EventItemPage event={event} />
     </Layout>
   );
 };
