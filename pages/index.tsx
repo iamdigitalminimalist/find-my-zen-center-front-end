@@ -6,7 +6,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Wellness Events App</title>
+        <title>Wellness Events App - Home Page</title>
         <meta name="description" content="Discover wellness events near you" />
       </Head>
       <Container maxWidth="lg">
