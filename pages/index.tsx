@@ -1,7 +1,5 @@
 import type { NextPage } from "next";
-import { Container, Box, Typography } from "@mui/material";
-import Head from "next/head";
-import { Layout } from "../components/Layout";
+import { Layout } from "@/components/Layout";
 
 const Home: NextPage = () => {
   return (

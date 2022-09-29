@@ -1,8 +1,8 @@
-import { Layout } from "../components/Layout";
+import { Layout } from "@/components/Layout";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import Link from "next/link";
 import { Error } from "@mui/icons-material";
-import { flexAlignCenter, flexColumnCenter } from "../utils/globalStyles";
+import { flexAlignCenter, flexColumnCenter } from "@/utils/globalStyles";
 
 const NotFoundPage = () => {
   return (

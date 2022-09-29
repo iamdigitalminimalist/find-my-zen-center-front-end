@@ -1,7 +1,6 @@
 import { NextPage } from "next";
-import Head from "next/head";
-import { Box, Container, Typography } from "@mui/material";
-import { Layout } from "../../components/Layout";
+import { Typography } from "@mui/material";
+import { Layout } from "@/components/Layout";
 
 const Events: NextPage = () => {
   return (
