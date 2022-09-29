@@ -2,6 +2,7 @@ import { Box, Container } from "@mui/material";
 import Head from "next/head";
 import React from "react";
 import Header from "./Header";
+import { Footer } from "./Footer";
 
 type LayoutProps = {
   title?: string;
@@ -44,6 +45,7 @@ export const Layout = ({
       >
         {children}
       </Box>
+      <Footer />
     </Box>
   );
 };
