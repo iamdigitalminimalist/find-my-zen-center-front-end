@@ -5,11 +5,8 @@ import { Layout } from "../../components/Layout";
 
 const Events: NextPage = () => {
   return (
-    <Layout>
+    <Layout title="Events Page">
       <>
-        <Typography variant="h4" component="h2" gutterBottom>
-          Events
-        </Typography>
         <Typography variant="h6" component="p" gutterBottom>
           List of events
         </Typography>

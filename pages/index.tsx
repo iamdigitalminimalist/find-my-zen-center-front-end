@@ -6,14 +6,11 @@ import { Layout } from "../components/Layout";
 const Home: NextPage = () => {
   return (
     <Layout
-      title="Wellness Events App - Home Page"
-      description="Discover wellness events near you"
+      metaTitle="Wellness Events App - Home Page"
+      metaDescription="Discover wellness events near you"
+      title="Wellness Events App"
     >
-      <>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Wellness Events App
-        </Typography>
-      </>
+      <></>
     </Layout>
   );
 };

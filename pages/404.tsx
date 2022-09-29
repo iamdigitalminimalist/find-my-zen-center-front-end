@@ -6,7 +6,7 @@ import { flexAlignCenter, flexColumnCenter } from "../utils/globalStyles";
 
 const NotFoundPage = () => {
   return (
-    <Layout title="Page Not Found">
+    <Layout metaTitle="Page Not Found">
       <Grid
         container
         spacing={3}

@@ -5,13 +5,11 @@ import { Layout } from "../components/Layout";
 const About: NextPage = () => {
   return (
     <Layout
-      title="Wellness Events App - About"
-      description="Discover wellness events near you - About Us"
+      metaTitle="Wellness Events App - About"
+      metaDescription="Discover wellness events near you - About Us"
+      title="About"
     >
       <>
-        <Typography variant="h4" component="h2" gutterBottom>
-          About
-        </Typography>
         <Typography variant="h6" component="p" gutterBottom>
           This is an app to find a local wellness event
         </Typography>

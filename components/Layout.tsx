@@ -3,37 +3,47 @@ import Head from "next/head";
 import React from "react";
 import Header from "./Header";
 import { Footer } from "./Footer";
+import { PageTitle } from "./PageTitle";
 
 type LayoutProps = {
+  metaTitle?: string;
+  metaDescription?: string;
+  metaKeywords?: string;
   title?: string;
-  description?: string;
-  keywords?: string;
   children: React.ReactNode;
 };
 
 export const Layout = ({
+  metaTitle,
+  metaDescription,
+  metaKeywords,
   title,
-  description,
-  keywords,
   children,
 }: LayoutProps) => {
   return (
     <Box>
       <Head>
-        <title>{title ? title : "Wellness Events App"}</title>
+        <title>{metaTitle ? metaTitle : "Wellness Events App"}</title>
         <meta
           name="description"
           content={
-            description ? description : "Learn about wellness events near you"
+            metaDescription
+              ? metaDescription
+              : "Learn about wellness events near you"
           }
         />
         <meta
           name="keywords"
-          content={keywords ? keywords : "wellness, meditation, retreat"}
+          content={
+            metaKeywords ? metaKeywords : "wellness, meditation, retreat"
+          }
         />
       </Head>
       <Header />
-      <Box component="main">{children}</Box>
+      <Box component="main">
+        {title ? <PageTitle title={title} /> : null}
+        {children}
+      </Box>
       <Footer />
     </Box>
   );
