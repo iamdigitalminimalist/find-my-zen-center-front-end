@@ -8,7 +8,7 @@ export const TeachersDetails = ({ teachers }: TeacherDetailsProps) => {
   return (
     <Box>
       {teachers.map((teacher: TeacherType) => (
-        <Typography key={teacher.id}>{teacher.name}</Typography>
+        <Typography key={teacher.id}>{teacher.attributes.name}</Typography>
       ))}
     </Box>
   );

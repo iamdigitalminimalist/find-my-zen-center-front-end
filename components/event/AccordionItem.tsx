@@ -9,7 +9,7 @@ import { TeachersDetails } from "./TeachersDetails";
 
 type AccordionItemProps = {
   detailTopic: string;
-  description?: string;
+  description?: string | null;
   teachers?: TeacherType[];
 };
 

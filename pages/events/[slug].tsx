@@ -13,7 +13,7 @@ interface Params extends ParsedUrlQuery {
 }
 
 const EventPage = ({ event }: EventPageProps) => {
-  // console.log(event);
+  // console.log("event", event);
   return (
     <Layout>
       <EventItemPage event={event} />
@@ -22,12 +22,14 @@ const EventPage = ({ event }: EventPageProps) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await fetch(`${process.env.API_URL}/api/events/`);
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/events/?populate=*`
+  );
   const data = await res.json();
-  const events = data.events;
+  const events = data.data;
 
   const paths = events.map((evt: EventType) => ({
-    params: { slug: evt.slug },
+    params: { slug: evt.attributes.slug },
   }));
 
   return {
@@ -41,9 +43,11 @@ export const getStaticProps: GetStaticProps<EventPageProps | Params> = async (
 ) => {
   const params = context.params!;
   const { slug } = params;
-  const res = await fetch(`${process.env.API_URL}/api/events/${slug}`);
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/events/?populate=*&filter[slug][$eq]=${slug}`
+  );
   const data = await res.json();
-  const event = data.event;
+  const event = data.data;
 
   return {
     props: {

@@ -7,45 +7,47 @@ import {
   Typography,
   CardMedia,
   Button,
+  CardActions,
+  CardHeader,
 } from "@mui/material";
 import { CalendarMonth, Place } from "@mui/icons-material";
 import { useRouter } from "next/router";
+import { format } from "date-fns";
+import { useState } from "react";
+import { flexAlignCenter } from "@/utils/globalStyles";
 
 type EventItemProps = {
   event: EventType;
 };
 
 export const EventItemCard = ({ event }: EventItemProps) => {
+  const [readMore, setReadMore] = useState(false);
   const router = useRouter();
   return (
-    <Box>
-      <Card
-        sx={{
-          display: "flex",
-          my: 3,
-        }}
-      >
-        <CardMedia>
-          <Box
-            sx={{
-              position: "relative",
-              width: { xs: 110, sm: 200, md: 300, lg: 400 },
-              height: "100%",
-            }}
-          >
-            <Image
-              src={event.image.imageUrl}
-              alt={event.image.imageAltText}
-              layout="fill"
-              objectFit="cover"
-            />
-          </Box>
-        </CardMedia>
-        <Box sx={{ display: "flex", flexDirection: "column" }}>
-          <CardContent sx={{ flex: "1 0 auto" }}>
-            <Typography component="h3" variant="h5">
-              {event.name}
-            </Typography>
+    <Card sx={{ maxWidth: 345, my: 2 }}>
+      <CardMedia>
+        <Box
+          sx={{
+            position: "relative",
+            height: 200,
+          }}
+        >
+          <Image
+            src={event.attributes.coverImage.data.attributes.formats.small.url}
+            alt=""
+            layout="fill"
+            objectFit="cover"
+          />
+        </Box>
+      </CardMedia>
+      <CardHeader
+        title={
+          <Typography gutterBottom variant="h6" component="h3">
+            {event.attributes.name}
+          </Typography>
+        }
+        subheader={
+          <>
             <Box
               sx={{
                 display: "flex",
@@ -59,7 +61,11 @@ export const EventItemCard = ({ event }: EventItemProps) => {
                 color="text.secondary"
                 component="p"
               >
-                {event.date.startDate} - {event.date.endDate}
+                {`${format(
+                  new Date(event.attributes.date.startDate),
+                  "MMM dd"
+                )} -
+                ${format(new Date(event.attributes.date.endDate), "MMM dd")}`}
               </Typography>
             </Box>
             <Box sx={{ display: "flex", alignItems: "center" }}>
@@ -69,21 +75,30 @@ export const EventItemCard = ({ event }: EventItemProps) => {
                 color="text.secondary"
                 component="p"
               >
-                {event.location}
+                {event.attributes.location}
               </Typography>
             </Box>
-          </CardContent>
-          <Box sx={{ display: "flex", alignItems: "center", pl: 3, pb: 2 }}>
-            <Button
-              variant="contained"
-              size="small"
-              onClick={() => router.push(`/events/${event.slug}`)}
-            >
-              More Details
-            </Button>
-          </Box>
-        </Box>
-      </Card>
-    </Box>
+          </>
+        }
+      />
+      <CardContent>
+        <Typography variant="body2" color="text.secondary">
+          {readMore
+            ? event.attributes.about
+            : `${event.attributes.about?.substring(0, 200)}...`}
+          <Button size="small" onClick={() => setReadMore(!readMore)}>
+            {readMore ? "show less" : "read more"}
+          </Button>
+        </Typography>
+      </CardContent>
+      <CardActions sx={flexAlignCenter}>
+        <Button
+          variant="contained"
+          onClick={() => router.push(`events/${event.attributes.slug}`)}
+        >
+          More Details
+        </Button>
+      </CardActions>
+    </Card>
   );
 };

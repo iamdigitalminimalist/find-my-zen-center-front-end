@@ -1,9 +1,57 @@
-interface EventType {
-  id: string;
-  name: string;
-  slug: string;
-  location: string;
-  address?: string;
+interface StrapiDefaultAttributes {
+  attributes: {
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+  };
+  meta: {
+    pagination: {
+      page: number;
+      pageSize: number;
+      pageCount: number;
+      total: number;
+    };
+  };
+}
+
+interface EventType extends StrapiDefaultAttributes {
+  id: number;
+  attributes: {
+    name: string;
+    slug: string;
+    location: string;
+    about: string | null;
+    schedule?: string | null;
+    accommodation?: string | null;
+    meals?: string | null;
+    address?: {
+      id: number;
+      street?: string;
+      city?: string;
+      state?: string;
+      postalCode?: string;
+      country: string;
+    };
+    date: {
+      id: number;
+      startDate: string;
+      endDate: string;
+    };
+    teachers: {
+      data: TeacherType[];
+    };
+    pricing: Pricing[];
+    coverImageCredits: {
+      id: number;
+      photographerName: string;
+      photographerCreditUrl: string;
+      sourceName: string;
+      sourceUrl: string;
+    };
+    coverImage: {
+      data: CloudinaryImageType;
+    };
+  };
   locationCode?: string;
   date: {
     startDate: string;
@@ -22,16 +70,73 @@ interface EventType {
   image: ImageType;
 }
 
-interface TeacherType {
-  id: string;
-  name: string;
+interface TeacherType extends StrapiDefaultAttributes {
+  id: number;
+  attributes: {
+    name: string;
+    slug: string;
+    about?: string;
+  };
 }
 
-interface ImageType {
-  imageUrl: string;
-  imageAltText: string;
-  imagePhotographerSource: string;
-  imagePhotographerCredit: string;
-  imageWebsiteSource: string;
-  imageWebsiteCredit: string;
+interface CloudinaryImageSizeVariant {
+  name: string;
+  hash: string;
+  ext: string;
+  mime: string;
+  path: null;
+  width: 500;
+  height: 333;
+  size: 25.69;
+  url: string;
+  provider_metadata: {
+    public_id: string;
+    resource_type: "image";
+  };
 }
+
+interface CloudinaryImageType {
+  id: number;
+  attributes: {
+    name: string;
+    alternativeText: string;
+    caption: string;
+    width: number;
+    height: number;
+    formats: {
+      thumbnail: CloudinaryImageSizeVariant;
+      small: CloudinaryImageSizeVariant;
+      large: CloudinaryImageSizeVariant;
+      medium: CloudinaryImageSizeVariant;
+    };
+    hash: string;
+    ext: string;
+    mime: string;
+    size: number;
+    url: string;
+    previewUrl: null;
+    provider: string;
+    provider_metadata: {
+      public_id: string;
+      resource_type: "image";
+    };
+    createdAt: string;
+    updatedAt: string;
+  };
+}
+
+// interface Pricing {
+//   id: number;
+//   amount: number;
+//   currency: string;
+// }
+
+// interface ImageType {
+//   imageUrl: string;
+//   imageAltText: string;
+//   imagePhotographerSource: string;
+//   imagePhotographerCredit: string;
+//   imageWebsiteSource: string;
+//   imageWebsiteCredit: string;
+//   event: EventType[];
+// }

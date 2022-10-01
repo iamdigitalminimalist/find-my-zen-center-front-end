@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import { CalendarMonth, CreditCard, Place } from "@mui/icons-material";
 import { flexAlignCenter } from "@/utils/globalStyles";
+import { format } from "date-fns";
 
 type EventCtaCardProps = {
   event: EventType;
@@ -34,39 +35,50 @@ export const EventCtaCard = ({ event }: EventCtaCardProps) => {
         </Typography>
         <Divider color="gray" sx={{ my: 2 }} />
         <Grid container>
-          {event.date ? (
+          {event.attributes.date ? (
             <>
               <Grid item xs={1}>
                 <CalendarMonth sx={{ height: 20, width: 20 }} />
               </Grid>
               <Grid item xs={11}>
                 <Typography variant="subtitle2" color="white" component="p">
-                  {event.date?.startDate} - {event.date?.endDate}
+                  {format(
+                    new Date(event.attributes.date.startDate),
+                    "MM/dd/yyyy"
+                  )}
+                  {" - "}
+                  {format(
+                    new Date(event.attributes.date.endDate),
+                    "MM/dd/yyyy"
+                  )}
                 </Typography>
               </Grid>
             </>
           ) : null}
-          {event.location ? (
+          {event.attributes.location ? (
             <>
               <Grid item xs={1}>
                 <Place sx={{ height: 20, width: 20 }} />
               </Grid>
               <Grid item xs={11}>
                 <Typography variant="subtitle2" color="white" component="p">
-                  {event.location}
+                  {event.attributes.location}
                 </Typography>
               </Grid>
             </>
           ) : null}
-          {event.pricing ? (
+          {event.attributes.pricing ? (
             <>
               <Grid item xs={1}>
                 <CreditCard sx={{ height: 20, width: 20 }} />
               </Grid>
               <Grid item xs={11}>
                 <Typography variant="subtitle2" color="white" component="p">
-                  {event.pricing?.currency === "NIS" ? "₪" : "$"}{" "}
-                  {event.pricing?.amount?.toLocaleString("en-US")}
+                  {event.attributes.pricing.length > 1
+                    ? "Starting from "
+                    : null}
+                  {event.attributes.pricing[0].currency === "NIS" ? "₪" : "$"}{" "}
+                  {event.attributes.pricing[0].amount.toLocaleString("en-US")}
                 </Typography>
               </Grid>
             </>

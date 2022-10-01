@@ -32,9 +32,11 @@ const Home = ({ events }: HomePageProps) => {
 };
 
 export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
-  const res = await fetch(`${process.env.API_URL}/api/events`);
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/events/?populate=*`
+  );
   const data = await res.json();
-  const events = data.events;
+  const events = data.data;
   return {
     props: {
       events,
