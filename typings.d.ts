@@ -140,3 +140,33 @@ interface CloudinaryImageType {
 //   imageWebsiteCredit: string;
 //   event: EventType[];
 // }
+
+// Add Event Form Fields
+
+interface EventGeneralFields {
+  name: string;
+  location: string;
+  about: string;
+  accommodation: string;
+  schedule: string;
+  date: {
+    startDate: Date | null;
+    endDate: Date | null;
+  };
+}
+
+interface EventAddressFields {
+  address1: string;
+  address2: string;
+  city: string;
+  state: string;
+  zip: string;
+  country: string;
+}
+
+interface EventImageFields {
+  photographerName: string;
+  photographerCreditUrl: string;
+  sourceName: string;
+  sourceUrl: string;
+}
