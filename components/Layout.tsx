@@ -6,6 +6,7 @@ import { Footer } from "./Footer";
 import { PageTitle } from "./PageTitle";
 import { useRouter } from "next/router";
 import { Hero } from "@/components/Hero";
+import { TopAppBar } from "@/components/TopAppBar";
 
 type LayoutProps = {
   metaTitle?: string;
@@ -42,7 +43,7 @@ export const Layout = ({
           }
         />
       </Head>
-      <Header />
+      <TopAppBar />
       <Box component="main" sx={{ minHeight: "100vh" }}>
         {title ? <PageTitle title={title} /> : null}
         {router.pathname === "/" ? <Hero /> : null}
