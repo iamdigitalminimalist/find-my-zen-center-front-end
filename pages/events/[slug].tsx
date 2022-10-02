@@ -46,6 +46,7 @@ const EventPage = ({ event }: EventPageProps) => {
           <EventHeader
             title={event.attributes.name}
             onDelete={handleDeleteEvent}
+            eventId={event.id}
           />
         </Grid>
 
@@ -57,6 +58,7 @@ const EventPage = ({ event }: EventPageProps) => {
                 : "/images/move-softly-yoga-vocation-in-sinai-cover-image.jpg"
             }
             imageAlt=""
+            height={600}
           />
           <Box m={2}>
             <AccordionItem

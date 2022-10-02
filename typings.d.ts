@@ -22,17 +22,18 @@ export interface EventType extends StrapiDefaultAttributes {
     name: string;
     slug: string;
     location: string;
-    about: string | null;
-    schedule?: string | null;
-    accommodation?: string | null;
-    meals?: string | null;
-    address?: {
-      id: number;
-      street?: string;
-      city?: string;
-      state?: string;
-      postalCode?: string;
-      country: string;
+    about: string | "";
+    schedule: string | "";
+    accommodation: string | "";
+    meals: string | "";
+    address: {
+      id: string | null;
+      street1: string | null;
+      street2: string | null;
+      city: string | null;
+      state: string | null;
+      zip: string | null;
+      country: string | null;
     };
     date: {
       id: number;
@@ -45,20 +46,18 @@ export interface EventType extends StrapiDefaultAttributes {
     pricing: Pricing[];
     coverImageCredits: {
       id: number;
-      photographerName: string;
-      photographerCreditUrl: string;
-      sourceName: string;
-      sourceUrl: string;
+      photographerName: string | null;
+      photographerCreditUrl: string | null;
+      sourceName: string | null;
+      sourceUrl: string | null;
     };
     coverImage: {
       data: CloudinaryImageType;
     };
   };
-  locationCode?: string;
   date: {
-    startDate: string;
-    endDate: string;
-    startTime?: string;
+    startDate: Dayjs | null;
+    endDate: Dayjs | null;
   };
   description: string;
   schedule?: string;
@@ -147,28 +146,28 @@ interface CloudinaryImageType {
 
 interface EventGeneralFields {
   name: string;
-  location: string;
-  about: string;
-  accommodation: string;
-  schedule: string;
-  meals: string;
+  location: string | "";
+  about: string | null;
+  accommodation: string | null;
+  schedule: string | null;
+  meals: string | null;
   date: {
     startDate: Dayjs | null;
     endDate: Dayjs | null;
   };
   address: {
-    street1: string;
-    street2: string;
-    city: string;
-    state: string;
-    zip: string;
-    country: string;
+    street1: string | null;
+    street2: string | null;
+    city: string | null;
+    state: string | null;
+    zip: string | null;
+    country: string | null;
   };
   coverImageCredits: {
-    photographerName: string;
-    photographerCreditUrl: string;
-    sourceName: string;
-    sourceUrl: string;
+    photographerName: string | null;
+    photographerCreditUrl: string | null;
+    sourceName: string | null;
+    sourceUrl: string | null;
   };
 }
 

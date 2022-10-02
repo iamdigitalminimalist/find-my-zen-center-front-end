@@ -1,14 +1,17 @@
 import { Button, Grid, Paper, Typography, Box, useTheme } from "@mui/material";
 import { Delete } from "@mui/icons-material";
 import React from "react";
+import { useRouter } from "next/router";
 
 type EventHeaderProps = {
   title: string;
   onDelete: (e: React.SyntheticEvent) => void;
+  eventId: number;
 };
 
-export const EventHeader = ({ title, onDelete }: EventHeaderProps) => {
+export const EventHeader = ({ title, onDelete, eventId }: EventHeaderProps) => {
   const theme = useTheme();
+  const router = useRouter();
 
   return (
     <Paper
@@ -48,6 +51,7 @@ export const EventHeader = ({ title, onDelete }: EventHeaderProps) => {
             Delete
           </Button>
           <Button
+            onClick={() => router.push(`/events/edit/${eventId}`)}
             size="small"
             variant="contained"
             startIcon={<Delete />}

@@ -1,15 +1,26 @@
 import React from "react";
-import { Grid, TextField, Typography } from "@mui/material";
+import {
+  Button,
+  Grid,
+  TextField,
+  Typography,
+  Box,
+  Container,
+} from "@mui/material";
+import { EventPhoto } from "@/components/event/EventPhoto";
+import { Upload } from "@mui/icons-material";
+import { flexAlignCenter } from "@/utils/globalStyles";
 
 type EventImageFormProps = {
-  photographerName: string;
+  photographerName: string | null;
   setPhotographerName: (photographerName: string) => void;
-  photographerCreditUrl: string;
+  photographerCreditUrl: string | null;
   setPhotographerCreditUrl: (photographerCreditUrl: string) => void;
-  photoSourceName: string;
+  photoSourceName: string | null;
   setPhotoSourceName: (photoSourceName: string) => void;
-  photoSourceUrl: string;
+  photoSourceUrl: string | null;
   setPhotoSourceUrl: (photoSourceUrl: string) => void;
+  imagePreview: string | null;
 };
 
 export const EventImageFormSection = (props: EventImageFormProps) => {
@@ -78,6 +89,32 @@ export const EventImageFormSection = (props: EventImageFormProps) => {
             }
             spellCheck="true"
           />
+        </Grid>
+
+        <Grid
+          item
+          xs={6}
+          sx={{
+            mx: "auto",
+          }}
+        >
+          <Container maxWidth="lg">
+            {props.imagePreview ? (
+              <EventPhoto imageSrc={props.imagePreview} height={200} />
+            ) : (
+              <Typography>No Image Uploaded</Typography>
+            )}
+            <Button
+              onClick={() => console.log("upload image")}
+              size="small"
+              variant="contained"
+              startIcon={<Upload />}
+              color="success"
+              sx={{ m: 2 }}
+            >
+              Upload Image
+            </Button>
+          </Container>
         </Grid>
       </Grid>
     </>

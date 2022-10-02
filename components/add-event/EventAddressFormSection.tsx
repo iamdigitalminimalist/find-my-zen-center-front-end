@@ -2,17 +2,17 @@ import { Grid, TextField, Typography } from "@mui/material";
 import React from "react";
 
 type EventAddressFormProps = {
-  streetOne: string;
+  streetOne: string | null;
   setStreetOne: (streetOne: string) => void;
-  streetTwo: string;
+  streetTwo: string | null;
   setStreetTwo: (streetTwo: string) => void;
-  city: string;
+  city: string | null;
   setCity: (city: string) => void;
-  province: string;
+  province: string | null;
   setProvince: (province: string) => void;
-  zipCode: string;
+  zipCode: string | null;
   setZipCode: (zipCode: string) => void;
-  country: string;
+  country: string | null;
   setCountry: (country: string) => void;
 };
 
