@@ -3,6 +3,7 @@ import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
 import { Box } from "@mui/material";
 import { ParsedUrlQuery } from "querystring";
 import { EventItemPage } from "@/components/event/EventItemPage";
+import { EventType } from "../../typings";
 
 type EventPageProps = {
   event: EventType;
@@ -44,7 +45,7 @@ export const getStaticProps: GetStaticProps<EventPageProps | Params> = async (
   const params = context.params!;
   const { slug } = params;
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/events/?populate=*&filter[slug][$eq]=${slug}`
+    `${process.env.NEXT_PUBLIC_API_URL}/api/events?filters[slug]slug=${slug}&populate=*`
   );
   const data = await res.json();
   const event = data.data;

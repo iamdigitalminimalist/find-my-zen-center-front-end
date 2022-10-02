@@ -11,6 +11,7 @@ import {
 import { CalendarMonth, CreditCard, Place } from "@mui/icons-material";
 import { flexAlignCenter } from "@/utils/globalStyles";
 import { format } from "date-fns";
+import { EventType } from "../../typings";
 
 type EventCtaCardProps = {
   event: EventType;
@@ -67,18 +68,17 @@ export const EventCtaCard = ({ event }: EventCtaCardProps) => {
               </Grid>
             </>
           ) : null}
-          {event.attributes.pricing ? (
+          {event.attributes.pricing.length > 1 ? (
             <>
               <Grid item xs={1}>
                 <CreditCard sx={{ height: 20, width: 20 }} />
               </Grid>
               <Grid item xs={11}>
                 <Typography variant="subtitle2" color="white" component="p">
-                  {event.attributes.pricing.length > 1
-                    ? "Starting from "
-                    : null}
-                  {event.attributes.pricing[0].currency === "NIS" ? "₪" : "$"}{" "}
-                  {event.attributes.pricing[0].amount.toLocaleString("en-US")}
+                  {event.attributes.pricing.length > 1 ? "Starting from" : null}
+                  `${event.attributes.pricing[0].currency === "NIS" ? "₪" : "$"}
+                  - $
+                  {event.attributes.pricing[0].amount.toLocaleString("en-US")}`
                 </Typography>
               </Grid>
             </>

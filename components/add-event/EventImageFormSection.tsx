@@ -2,34 +2,17 @@ import React from "react";
 import { Grid, TextField, Typography } from "@mui/material";
 
 type EventImageFormProps = {
-  generalFields: EventGeneralFields;
-  setGeneralFields: (generalFields: EventGeneralFields) => void;
+  photographerName: string;
+  setPhotographerName: (photographerName: string) => void;
+  photographerCreditUrl: string;
+  setPhotographerCreditUrl: (photographerCreditUrl: string) => void;
+  photoSourceName: string;
+  setPhotoSourceName: (photoSourceName: string) => void;
+  photoSourceUrl: string;
+  setPhotoSourceUrl: (photoSourceUrl: string) => void;
 };
 
-export const EventImageFormSection = ({
-  generalFields,
-  setGeneralFields,
-}: EventImageFormProps) => {
-  const handeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setGeneralFields({
-      ...generalFields,
-      coverImageCredits: {
-        ...generalFields.coverImageCredits,
-        [e.target.name]: e.target.value,
-      },
-    });
-  };
-
-  // const onPhotographerNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   setImageFields({ ...imageFields, photographerName: e.target.value });
-  // };
-  //
-  // const onPhotographerCreditUrlChange = (
-  //   e: React.ChangeEvent<HTMLInputElement>
-  // ) => {
-  //   setImageFields({ ...imageFields, photographerCreditUrl: e.target.value });
-  // };
-
+export const EventImageFormSection = (props: EventImageFormProps) => {
   return (
     <>
       <Typography variant="h6" gutterBottom>
@@ -44,8 +27,10 @@ export const EventImageFormSection = ({
             name="photographerName"
             label="Photographer Name"
             variant="outlined"
-            value={generalFields.coverImageCredits.photographerName}
-            onChange={handeChange}
+            value={props.photographerName}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              props.setPhotographerName(e.target.value)
+            }
             spellCheck="true"
           />
         </Grid>
@@ -57,8 +42,40 @@ export const EventImageFormSection = ({
             name="photographerCreditUrl"
             label="Photographer Credit URL"
             variant="outlined"
-            value={generalFields.coverImageCredits.photographerCreditUrl}
-            onChange={handeChange}
+            value={props.photographerCreditUrl}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              props.setPhotographerCreditUrl(e.target.value)
+            }
+            spellCheck="true"
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            fullWidth
+            type="text"
+            id="photographerCreditUrl"
+            name="photographerCreditUrl"
+            label="Photo Source Credit"
+            variant="outlined"
+            value={props.photoSourceName}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              props.setPhotoSourceName(e.target.value)
+            }
+            spellCheck="true"
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            fullWidth
+            type="text"
+            id="photographerCreditUrl"
+            name="photographerCreditUrl"
+            label="Photo Source Credit URL"
+            variant="outlined"
+            value={props.photoSourceUrl}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              props.setPhotoSourceUrl(e.target.value)
+            }
             spellCheck="true"
           />
         </Grid>

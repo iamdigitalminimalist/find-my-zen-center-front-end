@@ -3,6 +3,7 @@ import { AccordionItem } from "@/components/event/AccordionItem";
 import { EventCtaCard } from "@/components/event/EventCtaCard";
 import { EventHeader } from "@/components/event/EventHeader";
 import { EventPhoto } from "@/components/event/EventPhoto";
+import { EventType } from "../../typings";
 
 type EventItemPageProps = {
   event: EventType;
@@ -18,7 +19,9 @@ export const EventItemPage = ({ event }: EventItemPageProps) => {
       <Grid item xs={12} md={8}>
         <EventPhoto
           imageSrc={
-            event.attributes.coverImage.data.attributes.formats.large.url
+            event.attributes.coverImage.data
+              ? event.attributes.coverImage.data.attributes.formats.large.url
+              : "/images/move-softly-yoga-vocation-in-sinai-cover-image.jpg"
           }
           imageAlt=""
         />

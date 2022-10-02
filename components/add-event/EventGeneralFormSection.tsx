@@ -2,50 +2,31 @@ import { Grid, TextField, Typography } from "@mui/material";
 import React from "react";
 
 // Date Picker
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { Dayjs } from "dayjs";
 
 type EventGeneralFormProps = {
-  generalFields: EventGeneralFields;
-  setGeneralFields: (generalFields: EventGeneralFields) => void;
+  eventName: string;
+  setEventName: (eventName: string) => void;
+  location: string;
+  setLocation: (location: string) => void;
+  about: string;
+  setAbout: (about: string) => void;
+  accommodation: string;
+  setAccommodation: (accommodation: string) => void;
+  schedule: string;
+  setSchedule: (schedule: string) => void;
+  meals: string;
+  setMeals: (meals: string) => void;
+  startDate: Dayjs | null;
+  setStartDate: (startDate: Dayjs | null) => void;
+  endDate: Dayjs | null;
+  setEndDate: (endDate: Dayjs | null) => void;
 };
 
-export const EventGeneralFormSection = ({
-  generalFields,
-  setGeneralFields,
-}: EventGeneralFormProps) => {
-  const onNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setGeneralFields({ ...generalFields, name: e.target.value });
-  };
-
-  const onLocationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setGeneralFields({ ...generalFields, location: e.target.value });
-  };
-
-  const onAboutChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setGeneralFields({ ...generalFields, about: e.target.value });
-  };
-
-  const onScheduleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setGeneralFields({ ...generalFields, schedule: e.target.value });
-  };
-
-  const onAccommodationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setGeneralFields({ ...generalFields, accommodation: e.target.value });
-  };
-
-  // TODO: figure out how to update a nested object state
-  const onDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setGeneralFields({
-      ...generalFields,
-      date: {
-        ...generalFields.date,
-        [e.target.name]: e.target.value,
-      },
-    });
-  };
-
+export const EventGeneralFormSection = (props: EventGeneralFormProps) => {
   return (
     <>
       <Typography variant="h6" gutterBottom>
@@ -54,95 +35,124 @@ export const EventGeneralFormSection = ({
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
           <TextField
-            required
             fullWidth
+            required
             type="text"
             id="name"
             name="name"
-            label="Event Name"
+            label="Event Title"
             variant="outlined"
-            value={generalFields.name}
-            onChange={onNameChange}
+            value={props.eventName}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              props.setEventName(e.target.value)
+            }
             spellCheck="true"
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
             fullWidth
+            required
             type="text"
             id="location"
-            label="Event Location"
+            name="location"
+            label="Location"
             variant="outlined"
-            value={generalFields.location}
-            onChange={onLocationChange}
+            value={props.location}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              props.setLocation(e.target.value)
+            }
             spellCheck="true"
           />
         </Grid>
         <Grid item xs={12}>
           <TextField
+            multiline
             fullWidth
+            required
             type="text"
             id="about"
             name="about"
             label="About"
-            multiline
-            value={generalFields.about}
-            onChange={onAboutChange}
+            variant="outlined"
+            value={props.about}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              props.setAbout(e.target.value)
+            }
             spellCheck="true"
           />
         </Grid>
         <Grid item xs={12}>
           <TextField
+            multiline
             fullWidth
+            required
             type="text"
             id="schedule"
             name="schedule"
             label="Schedule"
-            multiline
-            value={generalFields.schedule}
-            onChange={onScheduleChange}
+            variant="outlined"
+            value={props.schedule}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              props.setSchedule(e.target.value)
+            }
             spellCheck="true"
           />
         </Grid>
         <Grid item xs={12}>
           <TextField
+            multiline
             fullWidth
+            required
             type="text"
             id="accommodation"
             name="accommodation"
             label="Accommodation"
-            multiline
-            value={generalFields.accommodation}
-            onChange={onAccommodationChange}
+            variant="outlined"
+            value={props.accommodation}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              props.setAccommodation(e.target.value)
+            }
             spellCheck="true"
           />
         </Grid>
-        {/*<Grid item xs={12} sm={6}>*/}
-        {/*  <LocalizationProvider dateAdapter={AdapterDateFns}>*/}
-        {/*    <DateTimePicker*/}
-        {/*      type="date"*/}
-        {/*      label="Start Date & Time"*/}
-        {/*      id="startDate"*/}
-        {/*      name="startDate"*/}
-        {/*      value={generalFields.date.startDate}*/}
-        {/*      onChange={onDateChange}*/}
-        {/*      renderInput={(params) => <TextField {...params} fullWidth />}*/}
-        {/*    />*/}
-        {/*  </LocalizationProvider>*/}
-        {/*</Grid>*/}
-        {/*<Grid item xs={12} sm={6}>*/}
-        {/*  <LocalizationProvider dateAdapter={AdapterDateFns}>*/}
-        {/*    <DateTimePicker*/}
-        {/*      type="date"*/}
-        {/*      label="End Date & Time"*/}
-        {/*      id="endDate"*/}
-        {/*      name="endDate"*/}
-        {/*      value={generalFields.date.endDate}*/}
-        {/*      onChange={onDateChange}*/}
-        {/*      renderInput={(params) => <TextField {...params} fullWidth />}*/}
-        {/*    />*/}
-        {/*  </LocalizationProvider>*/}
-        {/*</Grid>*/}
+        <Grid item xs={12}>
+          <TextField
+            multiline
+            fullWidth
+            required
+            type="text"
+            id="meals"
+            name="meals"
+            label="Meals"
+            variant="outlined"
+            value={props.meals}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              props.setMeals(e.target.value)
+            }
+            spellCheck="true"
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DateTimePicker
+              label="Start Date & Time"
+              value={props.startDate}
+              onChange={(newValue) => props.setStartDate(newValue)}
+              renderInput={(params) => <TextField {...params} fullWidth />}
+            />
+          </LocalizationProvider>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DateTimePicker
+              label="End Date & Time"
+              value={props.endDate}
+              onChange={(newValue) => props.setEndDate(newValue)}
+              renderInput={(params) => <TextField {...params} fullWidth />}
+            />
+          </LocalizationProvider>
+        </Grid>
       </Grid>
     </>
   );

@@ -1,3 +1,5 @@
+import { Dayjs } from "dayjs";
+
 interface StrapiDefaultAttributes {
   attributes: {
     createdAt: string;
@@ -14,7 +16,7 @@ interface StrapiDefaultAttributes {
   };
 }
 
-interface EventType extends StrapiDefaultAttributes {
+export interface EventType extends StrapiDefaultAttributes {
   id: number;
   attributes: {
     name: string;
@@ -149,13 +151,14 @@ interface EventGeneralFields {
   about: string;
   accommodation: string;
   schedule: string;
+  meals: string;
   date: {
-    startDate: Date | null;
-    endDate: Date | null;
+    startDate: Dayjs | null;
+    endDate: Dayjs | null;
   };
   address: {
-    address1: string;
-    address2: string;
+    street1: string;
+    street2: string;
     city: string;
     state: string;
     zip: string;
