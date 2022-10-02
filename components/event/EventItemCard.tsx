@@ -1,9 +1,7 @@
-import Link from "next/link";
 import Image from "next/image";
 import {
   Box,
   Card,
-  CardContent,
   Typography,
   CardMedia,
   Button,
