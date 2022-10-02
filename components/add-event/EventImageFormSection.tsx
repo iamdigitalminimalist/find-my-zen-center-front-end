@@ -2,23 +2,33 @@ import React from "react";
 import { Grid, TextField, Typography } from "@mui/material";
 
 type EventImageFormProps = {
-  imageFields: EventImageFields;
-  setImageFields: (imageFields: EventImageFields) => void;
+  generalFields: EventGeneralFields;
+  setGeneralFields: (generalFields: EventGeneralFields) => void;
 };
 
 export const EventImageFormSection = ({
-  imageFields,
-  setImageFields,
+  generalFields,
+  setGeneralFields,
 }: EventImageFormProps) => {
-  const onPhotographerNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setImageFields({ ...imageFields, photographerName: e.target.value });
+  const handeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setGeneralFields({
+      ...generalFields,
+      coverImageCredits: {
+        ...generalFields.coverImageCredits,
+        [e.target.name]: e.target.value,
+      },
+    });
   };
 
-  const onPhotographerCreditUrlChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setImageFields({ ...imageFields, photographerCreditUrl: e.target.value });
-  };
+  // const onPhotographerNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setImageFields({ ...imageFields, photographerName: e.target.value });
+  // };
+  //
+  // const onPhotographerCreditUrlChange = (
+  //   e: React.ChangeEvent<HTMLInputElement>
+  // ) => {
+  //   setImageFields({ ...imageFields, photographerCreditUrl: e.target.value });
+  // };
 
   return (
     <>
@@ -34,8 +44,8 @@ export const EventImageFormSection = ({
             name="photographerName"
             label="Photographer Name"
             variant="outlined"
-            value={imageFields.photographerName}
-            onChange={onPhotographerNameChange}
+            value={generalFields.coverImageCredits.photographerName}
+            onChange={handeChange}
             spellCheck="true"
           />
         </Grid>
@@ -47,8 +57,8 @@ export const EventImageFormSection = ({
             name="photographerCreditUrl"
             label="Photographer Credit URL"
             variant="outlined"
-            value={imageFields.photographerCreditUrl}
-            onChange={onPhotographerCreditUrlChange}
+            value={generalFields.coverImageCredits.photographerCreditUrl}
+            onChange={handeChange}
             spellCheck="true"
           />
         </Grid>

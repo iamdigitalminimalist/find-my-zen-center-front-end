@@ -15,52 +15,25 @@ import { EventAddressFormSection } from "@/components/add-event/EventAddressForm
 import { EventGeneralFormSection } from "@/components/add-event/EventGeneralFormSection";
 import { EventImageFormSection } from "@/components/add-event/EventImageFormSection";
 
-const steps = ["Event Details", "Event Address", "Review your order"];
+type EventMainFormProps = {
+  handleSubmit: (e: React.SyntheticEvent<HTMLFormElement>) => void;
+  generalFields: EventGeneralFields;
+  setGeneralFields: (generalFields: EventGeneralFields) => void;
+};
 
-export const EventMainForm = () => {
+const steps = ["Event Details", "Event Address", "Event Photo"];
+
+export const EventMainForm = ({
+  handleSubmit,
+  generalFields,
+  setGeneralFields,
+}: EventMainFormProps) => {
   const [activeStep, setActiveStep] = useState(0);
   const handleNext = () => {
     setActiveStep(activeStep + 1);
   };
   const handleBack = () => {
     setActiveStep(activeStep - 1);
-  };
-
-  const [generalFields, setGeneralFields] = useState<EventGeneralFields>({
-    name: "",
-    location: "",
-    about: "",
-    accommodation: "",
-    schedule: "",
-    date: {
-      startDate: null,
-      endDate: null,
-    },
-  });
-
-  const [addressFields, setAddressFields] = useState<EventAddressFields>({
-    address1: "",
-    address2: "",
-    city: "",
-    state: "",
-    zip: "",
-    country: "",
-  });
-
-  const [imageFields, setImageFields] = useState<EventImageFields>({
-    photographerName: "",
-    photographerCreditUrl: "",
-    sourceName: "",
-    sourceUrl: "",
-  });
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log({
-      generalFields,
-      addressFields,
-      imageFields,
-    });
   };
 
   const getStepContent = (step: number) => {
@@ -75,15 +48,15 @@ export const EventMainForm = () => {
       case 1:
         return (
           <EventAddressFormSection
-            addressFields={addressFields}
-            setAddressFields={setAddressFields}
+            generalFields={generalFields}
+            setGeneralFields={setGeneralFields}
           />
         );
       case 2:
         return (
           <EventImageFormSection
-            imageFields={imageFields}
-            setImageFields={setImageFields}
+            generalFields={generalFields}
+            setGeneralFields={setGeneralFields}
           />
         );
       default:
@@ -118,33 +91,32 @@ export const EventMainForm = () => {
             </React.Fragment>
           ) : (
             <>
-              <Box component="form" onSubmit={handleSubmit}>
-                {getStepContent(activeStep)}
-                <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-                  {activeStep !== 0 && (
-                    <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
-                      Back
-                    </Button>
-                  )}
+              {getStepContent(activeStep)}
+              <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+                {activeStep !== 0 && (
+                  <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
+                    Back
+                  </Button>
+                )}
 
-                  {activeStep < steps.length - 1 ? (
-                    <Button
-                      variant="contained"
-                      onClick={handleNext}
-                      sx={{ mt: 3, ml: 1 }}
-                    >
-                      Next
-                    </Button>
-                  ) : (
-                    <Button
-                      variant="contained"
-                      type="submit"
-                      sx={{ mt: 3, ml: 1 }}
-                    >
-                      Submit
-                    </Button>
-                  )}
-                </Box>
+                {activeStep < steps.length - 1 ? (
+                  <Button
+                    variant="contained"
+                    onClick={handleNext}
+                    sx={{ mt: 3, ml: 1 }}
+                  >
+                    Next
+                  </Button>
+                ) : (
+                  <Button
+                    variant="contained"
+                    type="submit"
+                    onClick={(e) => handleSubmit}
+                    sx={{ mt: 3, ml: 1 }}
+                  >
+                    Submit
+                  </Button>
+                )}
               </Box>
             </>
           )}

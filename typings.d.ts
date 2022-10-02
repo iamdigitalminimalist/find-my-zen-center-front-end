@@ -153,6 +153,20 @@ interface EventGeneralFields {
     startDate: Date | null;
     endDate: Date | null;
   };
+  address: {
+    address1: string;
+    address2: string;
+    city: string;
+    state: string;
+    zip: string;
+    country: string;
+  };
+  coverImageCredits: {
+    photographerName: string;
+    photographerCreditUrl: string;
+    sourceName: string;
+    sourceUrl: string;
+  };
 }
 
 interface EventAddressFields {

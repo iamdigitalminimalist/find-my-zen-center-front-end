@@ -2,37 +2,43 @@ import { Grid, TextField, Typography } from "@mui/material";
 import React from "react";
 
 type EventAddressFormProps = {
-  addressFields: EventAddressFields;
-  setAddressFields: (addressFields: EventAddressFields) => void;
+  generalFields: EventGeneralFields;
+  setGeneralFields: (generalFiedls: EventGeneralFields) => void;
 };
 
 export const EventAddressFormSection = ({
-  addressFields,
-  setAddressFields,
+  generalFields,
+  setGeneralFields,
 }: EventAddressFormProps) => {
-  const onAddressOneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setAddressFields({ ...addressFields, address1: e.target.value });
+  const onAddressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setGeneralFields({
+      ...generalFields,
+      address: { ...generalFields.address, [e.target.name]: e.target.value },
+    });
   };
 
-  const onAddressTwoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setAddressFields({ ...addressFields, address2: e.target.value });
-  };
-
-  const onCityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setAddressFields({ ...addressFields, city: e.target.value });
-  };
-
-  const onStateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setAddressFields({ ...addressFields, state: e.target.value });
-  };
-
-  const onZipChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setAddressFields({ ...addressFields, zip: e.target.value });
-  };
-
-  const onCountryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setAddressFields({ ...addressFields, country: e.target.value });
-  };
+  // const onAddressTwoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setGeneralFields({
+  //     ...generalFields,
+  //     address: { ...generalFields.address, [e.target.name]: e.target.value },
+  //   });
+  // };
+  //
+  // const onCityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setAddressFields({ ...addressFields, city: e.target.value });
+  // };
+  //
+  // const onStateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setAddressFields({ ...addressFields, state: e.target.value });
+  // };
+  //
+  // const onZipChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setAddressFields({ ...addressFields, zip: e.target.value });
+  // };
+  //
+  // const onCountryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setAddressFields({ ...addressFields, country: e.target.value });
+  // };
 
   return (
     <>
@@ -49,8 +55,8 @@ export const EventAddressFormSection = ({
             fullWidth
             autoComplete="shipping address-line1"
             variant="outlined"
-            value={addressFields.address1}
-            onChange={onAddressOneChange}
+            value={generalFields.address.address1}
+            onChange={onAddressChange}
           />
         </Grid>
         <Grid item xs={12}>
@@ -62,8 +68,8 @@ export const EventAddressFormSection = ({
             fullWidth
             autoComplete="shipping address-line2"
             variant="outlined"
-            value={addressFields.address2}
-            onChange={onAddressTwoChange}
+            value={generalFields.address.address2}
+            onChange={onAddressChange}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -75,8 +81,8 @@ export const EventAddressFormSection = ({
             fullWidth
             autoComplete="shipping address-level2"
             variant="outlined"
-            value={addressFields.city}
-            onChange={onCityChange}
+            value={generalFields.address.city}
+            onChange={onAddressChange}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -87,8 +93,8 @@ export const EventAddressFormSection = ({
             label="State/Province/Region"
             fullWidth
             variant="outlined"
-            value={addressFields.state}
-            onChange={onStateChange}
+            value={generalFields.address.state}
+            onChange={onAddressChange}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -100,8 +106,8 @@ export const EventAddressFormSection = ({
             fullWidth
             autoComplete="shipping postal-code"
             variant="outlined"
-            value={addressFields.zip}
-            onChange={onZipChange}
+            value={generalFields.address.zip}
+            onChange={onAddressChange}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -113,8 +119,8 @@ export const EventAddressFormSection = ({
             fullWidth
             autoComplete="shipping country"
             variant="outlined"
-            value={addressFields.country}
-            onChange={onCountryChange}
+            value={generalFields.address.country}
+            onChange={onAddressChange}
           />
         </Grid>
       </Grid>

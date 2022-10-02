@@ -51,7 +51,7 @@ export const EventGeneralFormSection = ({
       <Typography variant="h6" gutterBottom>
         General Details
       </Typography>
-      <Grid container component="form" spacing={2}>
+      <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
           <TextField
             required

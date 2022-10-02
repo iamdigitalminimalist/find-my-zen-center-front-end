@@ -33,7 +33,11 @@ export const EventItemCard = ({ event }: EventItemProps) => {
           }}
         >
           <Image
-            src={event.attributes.coverImage.data.attributes.formats.small.url}
+            src={
+              event.attributes.coverImage.data
+                ? event.attributes.coverImage.data.attributes.formats.small.url
+                : "/images/move-softly-yoga-vocation-in-sinai-cover-image.jpg"
+            }
             alt=""
             layout="fill"
             objectFit="cover"
